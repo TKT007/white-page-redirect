@@ -479,16 +479,15 @@
  </script>
 <script>
   (function() {
+    // Pega os parâmetros da URL atual
     const urlParams = new URLSearchParams(window.location.search);
-    const sourceValue = urlParams.get('source'); // Pega "source=IDENTIFICACAO"
-
-    // Se existir "source=", redireciona com o mesmo valor
-    if (sourceValue) {
-      window.location.href = `https://just-intime.vercel.app/csh-88388.html?source=${encodeURIComponent(sourceValue)}`;
-    }
-    // Se não existir, redireciona sem o parâmetro
-    else {
-      window.location.href = "https://just-intime.vercel.app/csh-88388.html";
-    }
+    const sourceValue = urlParams.get('source');
+    
+    // Monta a nova URL mantendo apenas o parâmetro source
+    const newUrl = window.location.pathname + 
+                  (sourceValue ? `?source=${encodeURIComponent(sourceValue)}` : '');
+    
+    // Redireciona
+    window.location.href = newUrl;
   })();
 </script>
