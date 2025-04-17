@@ -479,21 +479,9 @@
  </script>
 <script>
   (function() {
-    // 1. Captura o valor do source atual (se existir)
     const urlParams = new URLSearchParams(window.location.search);
-    const sourceValue = urlParams.get('source');
+    const sourceValue = urlParams.get('source') || '';
     
-    // 2. Remove TODOS os parâmetros da URL base
-    const baseUrl = window.location.origin + window.location.pathname;
-    
-    // 3. Só adiciona source= se existir valor
-    const finalUrl = sourceValue 
-      ? `${baseUrl}?source=${encodeURIComponent(sourceValue)}` 
-      : baseUrl;
-    
-    // 4. Redireciona apenas se a URL for diferente
-    if (window.location.href !== finalUrl) {
-      window.location.href = finalUrl;
-    }
+    window.location.href = window.location.pathname + `?source=${encodeURIComponent(sourceValue)}`;
   })();
 </script>
