@@ -479,15 +479,21 @@
  </script>
 <script>
   (function() {
-    // Pega os parâmetros da URL atual
+    // 1. Pega o valor original do source=
     const urlParams = new URLSearchParams(window.location.search);
     const sourceValue = urlParams.get('source');
     
-    // Monta a nova URL mantendo apenas o parâmetro source
-    const newUrl = window.location.pathname + 
-                  (sourceValue ? `?source=${encodeURIComponent(sourceValue)}` : '');
+    // 2. Remove tudo depois do ? na URL atual (se existir)
+    const cleanUrl = window.location.href.split('?')[0];
     
-    // Redireciona
-    window.location.href = newUrl;
+    // 3. Monta a nova URL com apenas source=
+    const newUrl = sourceValue 
+      ? `${cleanUrl}?source=${encodeURIComponent(sourceValue)}`
+      : cleanUrl;
+    
+    // 4. Redireciona
+    if (window.location.href !== newUrl) {
+      window.location.href = newUrl;
+    }
   })();
 </script>
