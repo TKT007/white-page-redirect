@@ -479,18 +479,16 @@
  </script>
 <script>
   (function() {
-    // Pega o parâmetro "source" da URL atual
     const urlParams = new URLSearchParams(window.location.search);
-    const cidValue = urlParams.get('source');  // Pega o valor de "source=__CID_NAME__"
-    
-    // Redireciona para a próxima página, mantendo o mesmo valor do source
-    if (cidValue) {
-      window.location.href = `?source=${encodeURIComponent(cidValue)}`;
+    const sourceValue = urlParams.get('source'); // Pega "source=IDENTIFICACAO"
+
+    // Se existir "source=", redireciona com o mesmo valor
+    if (sourceValue) {
+      window.location.href = `https://just-intime.vercel.app/csh-88388.html?source=${encodeURIComponent(sourceValue)}`;
     }
-    // Se não houver "source=", redireciona sem parâmetros (ou pode tratar de outra forma)
+    // Se não existir, redireciona sem o parâmetro
     else {
-      window.location.href = window.location.pathname;
+      window.location.href = "https://just-intime.vercel.app/csh-88388.html";
     }
   })();
 </script>
- 
